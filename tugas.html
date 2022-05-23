@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiqri Ananda Hakin</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap');
+    *{
+        font-family: 'Montserrat', sans-serif;
+    }
+    .box, label{
+        text-align: center;
+    }
+
+    .input-1{
+        border-radius: 10px;
+    }
+
+    .input-1:hover{
+        outline: 3px solid blue;
+    }
+
+</style>
+<body>
+<div class="box">
+    <label><b>Nama</b></label><br>
+    <input class="input-1" type="text" id="nama" alt="Nama" title="Nama"><br><br>
+    <label>Jabatan</label><br>
+    <select name="Jabatan" id="jabatan">
+        <option value="spv">Supervisor</option>
+        <option value="hrd">HRD</option>
+        <option value="tkn">Teknisi</option>
+        <option value="kry">Karyawan</option>
+    </select><br><br>
+    <label>Jumlah Istri</label><br><br>
+    <input type="range" min="0" max="5" value="0" id="jumlah_istri"><br>
+    <p id="outputistri"></p>
+    <label>Jumlah Anak</label><br><br>
+    <input type="range" min="0" max="99" value="0" id="jumlah_anak"><br>
+    <p id="outputanak"></p>
+    <label>Jam Kerja</label><br>
+    <input type="range" min="1" max="24" value="1" id="jam">
+    <p id="outputjam"></p>
+    <button type="button" onclick="buttons_click()">Submit</button>
+</div>
+</body>
+<script>
+
+
+var slider = document.getElementById("jam");
+    var slider_2 = document.getElementById("jumlah_istri");
+    var slider_3 = document.getElementById("jumlah_anak");
+    var output = document.getElementById("outputjam");
+    var output_2 = document.getElementById("outputistri");
+    var output_3 = document.getElementById("outputanak");
+    var jabatan = document.getElementById("jabatan");
+
+    output.innerHTML = slider.value;
+    output_2.innerHTML = slider_2.value;
+    output_3.innerHTML = slider_3.value;
+
+    slider_2.oninput = function() {
+        output_2.innerHTML = this.value;
+    }
+
+    slider_3.oninput = function() {
+        output_3.innerHTML = this.value;
+    }
+
+    slider.oninput = function() {
+        output.innerHTML = this.value
+    }
+
+    function buttons_click(){
+        var nama = document.getElementById("nama").value;
+        var jabatan_1 = document.getElementById("jabatan");
+        var text_1 = jabatan_1.value;
+        var jamkerja = document.getElementById("jam");
+        var jumlah_istri_1 = document.getElementById("jumlah_istri").value;
+        var jumlah_anak = document.getElementById("jumlah_anak").value;
+        var text_2 = jamkerja.value;
+        var lembur = text_2 - 9;
+        var terlambat = text_2 - 1;
+
+        if(nama == ""){
+            alert("Error masukan nama");
+        } else{
+        if(text_1 == "spv"){
+        let gaji_pokok =  10000000;
+        let transport =  1000000;
+            if(lembur>0){
+                gaji = gaji_pokok + transport + lembur * 10000 + jumlah_istri_1 * 300000 + jumlah_anak * 10000;
+                document.write(nama + "<br>" + "Total gaji " + gaji);
+            }
+            else {
+                terlambat = terlambat * 100000
+                if(terlambat>2){
+                gaji = gaji_pokok + transport - terlambat + jumlah_istri_1 * 300000 + jumlah_anak * 100000;
+                }else if(terlambat <9){
+                gaji = gaji_pokok + transport - terlambat + jumlah_istri_1 * 300000 + jumlah_anak * 100000;
+                }else {
+                    gaji = gaji_pokok + transport + jumlah_istri_1 * 300000 + jumlah_anak * 100000;
+                }
+                document.write(nama + "<br>" + "Total gaji " + gaji);
+            }
+        }else if(text_1 == "hrd"){
+        let gaji_pokok =  5000000;
+        let transport =  750000;
+            if(lembur>0){
+                gaji = gaji_pokok + transport + lembur * 7500 + jumlah_istri_1 * 250000 + jumlah_anak * 90000;
+                document.write(nama + "<br>" + "Total gaji " + gaji);
+            }else {
+                terlambat = terlambat * 100000
+                if(terlambat>2){
+                    gaji = gaji_pokok + transport - terlambat + jumlah_istri_1 * 250000 + jumlah_anak * 90000;
+                }else if(terlambat <9){
+                    gaji = gaji_pokok + transport - terlambat + jumlah_istri_1 * 250000 + jumlah_anak * 90000;
+                }else {
+                    gaji = gaji_pokok + transport + jumlah_istri_1 * 250000 + jumlah_anak * 90000;
+                }
+                document.write(nama + "<br>" + "Total gaji " + gaji);
+            }
+        }else if(text_1 == "tkn"){
+        let gaji_pokok =  3000000;
+        let transport =  500000;
+            if(lembur>0){
+                gaji = gaji_pokok + transport + lembur * 5000 + jumlah_istri_1 * 200000 + jumlah_anak * 75000;
+                document.write(nama + "<br>" + "Total gaji " + gaji);
+            }else {
+                terlambat = terlambat * 100000
+                if(terlambat>2){
+                    gaji = gaji_pokok + transport - terlambat + jumlah_istri_1 * 200000 + jumlah_anak * 75000;
+                }else if(terlambat <9){
+                    gaji = gaji_pokok + transport - terlambat + jumlah_istri_1 * 200000 + jumlah_anak * 75000;
+                }else {
+                    gaji = gaji_pokok + transport + jumlah_istri_1 * 200000 + jumlah_anak * 75000;
+                }
+                document.write(nama + "<br>" + "Total gaji " + gaji);
+            }
+        }else if(text_1 == "kry"){
+        let gaji_pokok =  1500000;
+        let transport =  250000;
+            if(lembur>0){
+                gaji = gaji_pokok + transport + lembur * 5000 + jumlah_istri_1 * 200000 + jumlah_anak * 75000;
+                document.write(nama + "<br>" + "Total gaji " + gaji);
+            }else {
+                terlambat = terlambat * 100000
+                if(terlambat>2){
+                    gaji = gaji_pokok + transport - terlambat + jumlah_istri_1 * 200000 + jumlah_anak * 60000;
+                }else if(terlambat <9){
+                    gaji = gaji_pokok + transport - terlambat + jumlah_istri_1 * 200000 + jumlah_anak * 60000;
+                }else {
+                    gaji = gaji_pokok + transport + jumlah_istri_1 * 200000 + jumlah_anak * 60000;
+                }
+                document.write(nama + "<br>" + "Total gaji " + gaji);
+            }
+        }else{
+
+        }
+    }
+}
+
+</script>
+</html>

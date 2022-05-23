@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas FileReader 2</title>
+</head>
+<body>
+    <div id="warper">
+        <h1>Text Reader</h1>
+        <div>
+            <h2>Select Text File : </h2>
+            <input type="file" id="textinput">
+        </div>
+        <pre id="filedisplayarea"></pre>
+    </div>
+</body>
+<script>
+    window.onload = function(){
+        var fileinput = document.getElementById('textinput');
+        var displayarea = document.getElementById('filedisplayarea');
+
+        fileinput.addEventListener('change', function(e) {
+            var file = fileinput.files[0];
+            var textType = /text.*/;
+
+            if (file.type.match(textType)) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    displayarea.innerText = reader.result;
+                }
+                reader.readAsText(file);
+            } else{
+                displayarea.innerText = "File not supported";
+            }
+        });
+    }
+</script>
+</html>
