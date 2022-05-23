@@ -18,13 +18,18 @@
 </body>
 <script>
     window.onload = function(){
+
+        //Menambahkan variable input dan display dan mengambil id
         var fileinput = document.getElementById('textinput');
         var displayarea = document.getElementById('filedisplayarea');
-
+        
+        //Membuat script untuk mengambil file dari local directory
         fileinput.addEventListener('change', function(e) {
+            // membuat variable untuk mengambil file dan jenis file
             var file = fileinput.files[0];
             var textType = /text.*/;
 
+            // percabangan pengecek apakah type text nya sesuai atau tidak jika iya akan membuka tampilan pengambil file dan menampilkan text
             if (file.type.match(textType)) {
                 var reader = new FileReader();
 
@@ -32,6 +37,7 @@
                     displayarea.innerText = reader.result;
                 }
                 reader.readAsText(file);
+                //jika tidak akan menampilkan text bahwa file itu tidak support dengan script ini
             } else{
                 displayarea.innerText = "File not supported";
             }
