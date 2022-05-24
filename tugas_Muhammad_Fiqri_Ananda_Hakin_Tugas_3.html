@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+<style>
+    *{
+        background-color: #44ab6f ;
+        margin: 0;
+        padding: 0;
+    }
+
+p{
+    text-align: center;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 30px;
+    color: white;  
+}
+.id-1{
+    text-align: center;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 50px;
+    color: white;
+    margin-top: 300px;
+    cursor:default;
+    user-select: none;
+}
+</style>
+<body>
+    <p>Fiqri Ananda</p>
+    <div class="id-1 "id="id-1">
+
+    </div>
+</body>
+<script>
+    var bilangan;
+    var faktor = 0;
+    var sisabagi;
+    var hasilcek;
+
+    bilangan = prompt("Isikan bilangan:");
+    
+
+    if(isNaN (bilangan)) {
+        alert("Invalid Input")
+        document.location.reload ()
+    }
+    else{
+        
+        
+
+        for(var i=1; i<=bilangan;i++){
+            sisabagi = bilangan % i;
+            if(sisabagi==0){
+                faktor = faktor +1;
+            }
+        }
+
+        if (faktor==2){
+            hasilcek = "Bilangan prima";
+        }
+        else{
+            hasilcek = "Bilangan tidak prima";
+        }
+
+        document.getElementById("id-1").innerHTML= bilangan + " Adalah " + hasilcek;
+    }
+</script>
+</html>
